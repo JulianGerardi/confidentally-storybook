@@ -41,8 +41,9 @@ export function ButtonsContainer({
         <span className="cb-bc__name">{patientName}</span>
         <IconChevronDown size={16} className="cb-bc__chevron" />
         <div className="cb-bc__badges">
-          <ClinicalBadge label="CC" />
-          <ClinicalBadge label="TR" />
+          {/* CC = Chief Complaint, TR = Triage — must use distinct `type` values or both render the same default badge */}
+          <ClinicalBadge type="Chief Complaint" />
+          <ClinicalBadge type="Triage" />
         </div>
       </div>
 
