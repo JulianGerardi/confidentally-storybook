@@ -1,0 +1,152 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Screens/Treatment Plan" />
+
+# Treatment Plan - Overview
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Treatment Plan - Overview (node `606:3087`)
+- **Node ID:** `606:3166`
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-3166
+- **Tamaño:** 1064.4×904
+
+## Descripción
+
+Dashboard principal del plan de tratamiento: resumen de indicadores clínicos y listado de casos.
+
+## Secciones principales
+
+- Header + `ClinicalModeButton`
+- Indicadores resumen: "Medications" (5), "Conditions" (0), "Allergy" (2), "Conditions" (2) — contadores con `Badge`
+- 4× `Icon / Info` (tooltips informativos por indicador)
+- 2× `Icon / Pill`, 2× `Icon / FileCheck`, 2× `Icon / EllipsisVertical` (acciones por caso/fila)
+- Campo `Input`, "Username"/"Subtext" (autor de las notas)
+- 2× `Button`
+
+---
+
+# Treatment Plan - Procedure List / New Case Group
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Treatment Plan - Overview (node `606:3087`)
+- **Node IDs:** `606:3350` (Procedure List) · `606:3665` (New Case Group, misma base + `Input`)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-3350
+- **Tamaño:** 1064.4×914
+
+## Descripción
+
+Listado tabular de procedimientos del plan de tratamiento, con sidebar de navegación por caso.
+
+## Columnas de la tabla
+
+Date · Surface · Tooth · Location · Procedure · Provider · Fee · Status · Actions
+
+## Composición
+
+- Sidebar: `Sidebar Icon`, `Sidebar Menu Icon`, 3× `SidebarMenuButton`, 3× `SidebarMenuSub`, 2× `SidebarMenuItem`, 3× `Sidebar Subitem Icon`, `Sidebar Menu Item Text`
+- Header + `ClinicalModeButton`
+- 12× `Badge` (estados por fila), 13× `Icon`
+- 4× `Button` (6 en la variante "New Case Group", que agrega un `Input` para nombrar el nuevo grupo de casos)
+
+## Notas
+
+- Frames "Button" sueltos (`606:3660`–`606:3664`) son variantes de botón aisladas usadas como referencia visual, no pantallas independientes.
+
+---
+
+# Treatment Plan - Move Procedure / New Alternative Case
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Treatment Plan - Overview (node `606:3087`)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-4000
+
+## Treatment Plan - Move Procedure (node `606:4000`)
+
+Misma tabla base que "Procedure List" (ver `02-Procedure-List.md`), con selección múltiple: agrega 5× `RadioButton` para elegir el caso destino.
+
+## Treatment Plan - New Alternative Case (With Destination) (node `606:4331`)
+
+Variante con 2× `RadioButton` + `Input` para crear un caso alternativo con destino ya seleccionado. Misma sidebar y estructura de tabla.
+
+## Treatment Plan - New Alternative Case (simple) (node `606:3988`)
+
+Versión simplificada (sin sidebar/tabla completa): `Title`, `Procedure label`, `Input`, 2× `Button`.
+
+---
+
+# Treatment Plan - Case Detail
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Treatment Plan - Overview (node `606:3087`)
+- **Node IDs:** `606:4659` (base) · `606:5007` (With Visits) · `606:5319` (With Consent)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-4659
+- **Tamaño:** ~1055-1064×1135-1280
+
+## Descripción
+
+Vista de detalle de un caso del plan de tratamiento, con metadata de creación y lista de procedimientos.
+
+## Composición base (node `606:4659`)
+
+- Sidebar (igual patrón que Procedure List)
+- `Creation Date Label/Value`, `Creator Label/Value`, `Status Label`
+- 13× `Badge`, 17× `Icon`, `Search Icon`, `Save Icon`
+- `Input`, 5× `Button`
+
+## Variante: With Visits (node `606:5007`)
+
+Agrega historial de visitas: `Icon / Link` ×6, `Icon / ClipboardPlus` ×4, `Icon / ScanSearch` ×4, `Icon / BookOpen` ×2, `Icon / EllipsisVertical` ×8, 3× `Input`.
+
+## Variante: With Consent (node `606:5319`)
+
+Similar a "With Visits" (mismos íconos de vínculo/documentos), con 10× `Badge` y 6× `Icon` — incluye el consentimiento informado vinculado al caso.
+
+---
+
+# Treatment Plan - Complete Procedure
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Treatment Plan - Overview (node `606:3087`)
+- **Node ID:** `606:5767`
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-5767
+- **Tamaño:** 1055×989
+
+## Descripción
+
+Vista de la tabla de procedimientos en estado de completado/cierre de caso.
+
+## Composición
+
+- Sidebar (mismo patrón)
+- 15× `Badge`, 16× `Icon`, 3× `Calendar Icon`
+- 9× `Button`
+
+---
+
+# Treatment Plan — Diálogos y Pop-ups
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Treatment Plan - Overview (node `606:3087`)
+
+## Diálogos (Dialog)
+
+| Diálogo | Node ID | Composición |
+|---|---|---|
+| Move Procedure (Options) | `606:5672` | `Title Text`, `Section Title`, 2× `RadioButton`, 2× `Button` |
+| Move Procedure (Select Destination) | `606:5686` | igual + 3× `RadioButton` |
+| Remove Procedure | `606:5701` | `Title`, `Confirmation Text`, 2× `Button` |
+| Present Case | `606:5712` | `Title`, `Confirmation Text`, 2× `Button` |
+| Present Case (Group) | `606:5723` | idéntico, para grupos de casos |
+| Accept Case | `606:5734` | `Title`, `Confirmation Text`, 2× `Button` |
+| Discard Case | `606:5745` | `Title`, `Confirmation Text`, 2× `Button` |
+| Discard Case (Group) | `606:5756` | idéntico, para grupos |
+| Delete Case | `761:6995` | + `Section Title`, 2× `RadioButton` (opciones de qué hacer al eliminar) |
+| Delete Procedure | `761:7011` | igual que Delete Case |
+
+## Pop-ups (toasts/notificaciones, solo contienen `Title`)
+
+`606:3146` (remove) · `606:3150` (status) · `606:3162` (Delete) · `606:7895` (Move) · `761:7072` (Delete) · `761:7075` (new) · `761:7078` (remove) · `761:7081` (status)
+
+## Notas
+
+- Todos los diálogos de confirmación (Move/Remove/Present/Accept/Discard/Delete) comparten el mismo patrón visual: título + texto de confirmación + 2 botones — candidato claro a unificarse en un solo componente parametrizable en Figma en vez de 10 frames casi idénticos.
