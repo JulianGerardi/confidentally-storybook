@@ -82,7 +82,8 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: var(--radius-md);
+  /* Figma reference (node 455:2111) shows round provider avatars, not squares */
+  border-radius: var(--radius-full);
   background: var(--color-confidentally);
   color: var(--color-white);
   font-weight: 700;
