@@ -1,0 +1,24 @@
+.cb-start-encounter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 7px;
+  border-radius: var(--radius-lg);
+  background: var(--color-confidentally);
+  color: var(--color-white);
+  border: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+}
+.cb-start-encounter__icon,
+.cb-start-encounter__chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.cb-start-encounter:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
