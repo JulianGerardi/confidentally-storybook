@@ -1,0 +1,14 @@
+.cb-steps { display: flex; align-items: center; height: 47px; }
+.cb-steps__item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.cb-steps__label { font-family: var(--font-body); font-size: 11px; color: var(--color-neutral-300); }
+.cb-steps__label--active { color: var(--color-confidentally); }
+.cb-steps__label--complete { color: var(--color-success-normal-active); }
+.cb-steps__badge {
+  width: 17px; height: 17px; border-radius: 9999px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: var(--color-white); background: var(--color-neutral-300);
+}
+.cb-steps__badge--active { background: var(--color-confidentally); }
+.cb-steps__badge--complete { background: var(--color-success-normal); }
+.cb-steps__check { width: 10px; height: 10px; }
+.cb-steps__connector { flex: 1; height: 1px; background: var(--color-border-default); margin: 0 8px; min-width: 24px; }
