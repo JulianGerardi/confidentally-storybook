@@ -1,0 +1,39 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Screens/Overview" />
+
+# Índice — Pantallas de UX-UI · 2.0
+
+Documentación por pantalla/flujo (no por capa individual) de las 12 páginas compartidas del archivo **UX-UI · 2.0** (fileKey `aESBq2SDwG2b4fnTyfBUgn`).
+
+| # | Página Figma | Node ID | Carpeta |
+|---|---|---|---|
+| 1 | ↪ Patients | `1054:8756` | `09-Patients/` |
+| 2 | ↪ Referral | `284:881` | `02-Referral/` |
+| 3 | ↪ Lab Order | `284:7407` / `606:7898` | `03-LabOrder/` |
+| 4 | ↪ Prescription | `284:10065` | `04-Prescription/` |
+| 5 | ↪ Ros - Physical | `774:20445` | `05-RosPhysical/` |
+| 6 | ↪ Extra Oral - Intra Oral | `773:3455` | `06-ExtraIntraOral/` |
+| 7 | ↪ Dental Assessment | `606:9259` | `07-DentalAssessment/` |
+| 8 | ↪ Treatment Plan - Overview | `606:3087` | `08-TreatmentPlan/` |
+| 9 | ↪ Consent Template | `954:4939` | `10-ConsentTemplate/` |
+| 10 | ↪ Radiography | `781:5413` | `11-Radiography/` |
+| 11 | ↪ Vitals | `877:17993` | `12-Vitals/` |
+
+Nota: las carpetas están numeradas en el orden en que se generaron, no por página; usá la tabla de arriba para ubicar cada página.
+
+## Criterio usado
+
+Un archivo `.md` por cada pantalla/flujo distinto y con valor propio. Se consolidaron:
+- **Duplicados exactos** (mismo nombre y misma composición de instancias) → un solo archivo, node IDs listados.
+- **Estados de una misma pantalla** (Default/Error/Disabled/Alerts, etc.) → documentados como sección dentro del mismo archivo.
+- **Diálogos/pop-ups reutilizados** entre páginas (ej. "Dialog - Discard Procedure (With Conditions)") → documentados en la primera página donde aparecen, con nota de reutilización en las demás.
+- **Frames "(Label)"** → son separadores visuales dentro del canvas de Figma, no pantallas; se mencionan como nota, no como archivo propio.
+
+## Inconsistencias detectadas (para sumar al reporte de nomenclatura/tokens)
+
+- Typos recurrentes: "Birthaday" (Birthday), "Serch" (Search), "Desable" (Disable), "Overwiev" (Overview), textos en mayúsculas irregulares ("dASHBOARD PATIENT", "Extra oRAL").
+- Nombre de fila "Prescription Row" reutilizado en tablas que no son de prescripciones (ej. tabla de condiciones ROS).
+- La tabla "Prescription - List" está duplicada en dos páginas distintas (Prescription y Lab Order) con headers de columna inconsistentes entre sí.
+- El botón "New Prescription" aparece en la pantalla de Lab Order (debería decir "New Lab Order").
+- 10 diálogos de confirmación (Move/Remove/Present/Accept/Discard/Delete Procedure o Case) comparten el mismo patrón visual pero están duplicados como frames independientes en vez de ser un único componente parametrizable.
