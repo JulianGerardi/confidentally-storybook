@@ -1,0 +1,151 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Screens/Dental Assessment" />
+
+# Dental Assessment — Select Dentition / Tooth Detail
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Dental Assessment (node `606:9259`)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-9395
+
+## Dental Assessment - Select Dentition (node `606:9395`)
+
+Selector de dentición general del paciente, con lista de hallazgos.
+
+- 10× `Label` (probablemente numeración de piezas dentales)
+- Panel de hallazgos: `Findings Label`, 5× `Badge`, 5× `Calendar Icon`, 5× `Icon`, 4× `Button`
+
+## Dental Assessment - Tooth Detail (Empty) (node `606:9524`)
+
+Vista de detalle de una pieza dental sin historial — misma estructura base más `Sidebar / Header Button`.
+
+## Dental Assessment - Tooth Detail (With History) (node `606:9652`)
+
+Igual a la anterior, pero con historial cargado: 9× `Badge` y 9× `Calendar Icon` (vs. 5 en el estado vacío) — más entradas de hallazgos históricos.
+
+---
+
+# Dental Assessment — New Procedure
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Dental Assessment (node `606:9259`)
+- **Node IDs:** `606:9834` · `698:5786` · `710:4441` (variante "Edit Procedure" con la misma base)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-9834
+
+## Descripción
+
+Formulario para registrar un nuevo procedimiento dental sobre una pieza específica.
+
+## Composición
+
+- Header, `Sidebar / Header Button`, `Steps` (stepper)
+- 7× `Frame 1000005681` (bloque repetido — probablemente selector de pieza/superficie dental)
+- Panel de hallazgos: 6× `Badge`, 5× `Calendar Icon`, 5× `Icon`, 7× `Button`
+- `Input` (1-2 según variante)
+
+## Notas
+
+- Los frames "Dental Assessment - New Procedure (Label)" (`606:11582`, `698:6141`, `700:5241`) son separadores visuales ("Edit pROCEDURE", "New procedure", "Header Text" — capitalización inconsistente), no pantallas.
+
+---
+
+# Dental Assessment — New Condition
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Dental Assessment (node `606:9259`)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-11584
+
+## Paso 1 — Condition Selected (node `606:11584`)
+
+- `Steps`, `Sidebar / Header Button`, `Card Referral`
+- 6× `Button`, 2× `Save Button`, `button` (minúscula, inconsistencia de naming)
+- Panel de hallazgos: 5× `Badge`/`Calendar Icon`/`Icon`
+
+## Paso 2 — Surface Select (node `698:5979`)
+
+Misma composición que "Condition Selected" — selección de superficie del diente afectada.
+
+## Paso 3 — Condition Selected (Second Step) (node `673:2671`)
+
+- 10× `Badge`, 10× `Calendar Icon` (historial ampliado)
+- 7× `Tabs / Trigger`
+- 5× `Icon / Link`, 5× `Icon / Link2Off` (vincular/desvincular procedimientos relacionados)
+- `LeftIcon`, `Input`
+
+## Notas
+
+- El frame "Dental Assessment - New Condition (Label)" (`698:5483`) es un separador visual ("New condition").
+
+---
+
+# Dental Assessment — Edit Procedure
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Dental Assessment (node `606:9259`)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=606-11727
+
+Flujo de edición de un procedimiento existente, organizado en tabs.
+
+## Tab: Findings (node `606:11727`)
+
+- 10× `Badge`, 10× `Calendar Icon`, 10× `Links Icon`
+- 8× `Tabs / Trigger`
+- `LeftIcon`, `Input search`
+
+## Tab: Add Diagnostic (node `700:7827`)
+
+- 8× `Card Referral` (diagnósticos disponibles para vincular)
+- 8× `Tabs / Trigger`, 5× `Badge`/`Calendar Icon`
+
+## Tab: Insurance (node `700:8283`)
+
+- 8× `Tabs / Trigger`
+- Iconos de montos: `Prim Ins Portion Dollar Icon`, `Guar Ins Portion Dollar Icon`, `Ins Write-off Dollar Icon`, `Icon / DollarSign` — desglose de cobertura de seguro (porción primaria, garante, condonado)
+
+## Base (node `710:4441`)
+
+Contenedor general del flujo con `Steps`, `Sidebar / Header Button`, 2× `Input`.
+
+---
+
+# Dental Assessment — Diálogos de confirmación
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Dental Assessment (node `606:9259`)
+
+Set de diálogos modales reutilizados en el flujo de procedimientos dentales:
+
+| Diálogo | Node ID | Composición |
+|---|---|---|
+| Complete Procedure | `606:12379` | `Title Text`, `Confirmation Text`, 2× `Button` |
+| Discard Procedure | `606:12390` | `Title Text`, `Confirmation Text`, 2× `Button` |
+| Not Indicated Procedure | `606:12401` | `Title`, `Confirmation Text`, 2× `Button` |
+| Complete Procedure (With Conditions) | `606:12412` | + 2× `Badge`/`Calendar Icon`, 4× `Button` |
+| Discard Procedure (With Conditions) | `606:12449` | + 3× `Badge`/`Calendar Icon`, 5× `Button` |
+| Discard Procedure (With Conditions) [dup] | `802:13097` | idéntico al anterior |
+| Pop-up/ status | `606:12371`, `606:12377` | solo `Title` — placeholder de notificación toast/status |
+
+## Notas
+
+- Mismo patrón "Dialog - Discard/Complete Procedure (With Conditions)" documentado también en Referral y Lab Order — es un componente de confirmación reutilizado transversalmente en todo el producto.
+
+---
+
+# Panel - Edit Condition
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Dental Assessment (node `606:9259`)
+- **Node IDs:** `700:8636` · `851:6465` (duplicado)
+- **Tamaño:** 449×1037
+
+## Descripción
+
+Panel lateral (drawer) para editar una condición dental existente.
+
+## Composición
+
+- `Section Title`
+- Varios `Procedure label` (5-6 según variante) + `Text`
+- 2× `Input`, 1-2× `Badge`
+- `Sidebar / Header Button`, `Steps`
+- 2× `Button`
