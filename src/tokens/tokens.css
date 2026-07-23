@@ -1,0 +1,38 @@
+/* Tokens generados a partir de Figma (Design system · 2.0 > Clinical Mode). */
+/* NO EDITAR A MANO: correr `npm run sync-tokens` para regenerar este archivo */
+/* desde las Variables de Figma (ver scripts/sync-figma-tokens.mjs). */
+
+:root {
+    /* Color */
+    --color-success-default: #28c563;
+  --color-confidentally: #0056ef;
+  --color-foreground-default: #18181b;
+  --color-border-default: #e4e4e7;
+  --color-input-border: #e4e4e7;
+      --color-primary-subtle: #eff4ff;
+      --color-danger-default: #ff0608;
+  --color-blue-50: #eff4ff;
+      --color-neutral-300: #d4d4d8;
+      --color-grey-dark: #939393;
+  --color-white: #ffffff;
+      --color-black: #000000;
+  --color-success-light-hover: #ddf0e5;
+      --color-success-normal: #1e9850;
+  --color-success-normal-active: #187a40;
+  --color-warning-dark: #bf8a21;
+      --color-not-encounter-bg: #dddddd;
+      --color-not-encounter-border: #b0b0b0;
+
+  /* Radius */
+  --radius-lg: 8px;
+  --radius-md: 6px;
+  --radius-sm: 4px;
+  --radius-full: 9999px;
+  --radius-pill: 40px;
+
+  /* Typography */
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-size-small: 14px;
+  --line-height-small: 20px;
+}
