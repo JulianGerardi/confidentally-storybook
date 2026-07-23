@@ -28,6 +28,7 @@ export function IconChevronUp({ size = 18, className }: IconProps) {
     </svg>
   );
 }
+
 export function IconDocument({ size = 18, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
@@ -48,6 +49,7 @@ export function IconTrash({ size = 18, className }: IconProps) {
     </svg>
   );
 }
+
 export function IconKebab({ size = 18, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
@@ -189,6 +191,44 @@ export function IconChevronRight({ size = 18, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
       <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+export function IconPill({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <rect x="3" y="8" width="18" height="8" rx="4" transform="rotate(45 12 12)" />
+      <path d="M9 9l6 6" />
+    </svg>
+  );
+}
+
+export function IconPulse({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M3 12h4l2 7 4-14 2 7h6" />
+    </svg>
+  );
+}
+
+export function IconPersonSearch({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="10" cy="8" r="3" />
+      <path d="M4 19c0-3.3 2.7-6 6-6" />
+      <circle cx="16" cy="16" r="3" />
+      <path d="M18.3 18.3L21 21" />
+    </svg>
+  );
+}
+
+export function IconInfo({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5" />
+      <circle cx="12" cy="8" r="0.6" fill="currentColor" stroke="none" />
     </svg>
   );
 }
