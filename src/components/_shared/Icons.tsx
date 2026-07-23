@@ -28,7 +28,6 @@ export function IconChevronUp({ size = 18, className }: IconProps) {
     </svg>
   );
 }
-
 export function IconDocument({ size = 18, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
@@ -49,7 +48,6 @@ export function IconTrash({ size = 18, className }: IconProps) {
     </svg>
   );
 }
-
 export function IconKebab({ size = 18, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
@@ -175,6 +173,22 @@ export function IconLoader({ size = 18, className }: IconProps) {
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
       <path d="M20 12a8 8 0 1 1-2.3-5.7" />
       <path d="M20 4v4h-4" />
+    </svg>
+  );
+}
+
+export function IconChevronLeft({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M15 6l-6 6 6 6" />
+    </svg>
+  );
+}
+
+export function IconChevronRight({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M9 6l6 6-6 6" />
     </svg>
   );
 }
