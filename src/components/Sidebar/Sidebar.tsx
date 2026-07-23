@@ -1,64 +1,57 @@
 import React from "react";
 import "./Sidebar.css";
-
-export type SidebarState = "Default" | "Inactive" | "Frame";
+import { IconPill, IconPulse, IconPersonSearch, IconInfo, IconChevronDown } from "../_shared/Icons";
 
 export interface SidebarProps {
-  /**
-   * Documentado en clinical-mode-components/02-Sidebar.md: `Default` (331px),
-   * `Inactive` (332px, acciones deshabilitadas) y `Frame` (631px, versión
-   * ancha). El contenido exacto de `Frame` no se confirmó vía captura en
-   * Figma — se replica el mismo layout con más ancho disponible.
-   */
-  state?: SidebarState;
-  userName?: string;
-  avatarUrl?: string;
-  onProfileClick?: () => void;
-  onActionClick?: (action: "pill" | "location" | "user" | "badge") => void;
+  onProfileClick: () => void;
+  onActionClick: (action: "pill" | "location" | "user" | "badge") => void;
+  state: "Default" | "Inactive" | "Frame";
+  userName: string;
   className?: string;
 }
 
-/**
- * Sidebar — barra de perfil + accesos rápidos. Figma node 254:3016.
- */
-export const Sidebar: React.FC<SidebarProps> = ({
-  state = "Default",
-  userName = "Julio Perez",
-  avatarUrl,
-  onProfileClick,
-  onActionClick,
-  className,
-}) => {
-  const disabled = state === "Inactive";
+const actions: { key: "pill" | "location" | "user" | "badge"; Icon: typeof IconPill }[] = [
+  { key: "pill", Icon: IconPill },
+  { key: "location", Icon: IconPulse },
+  { key: "user", Icon: IconPersonSearch },
+  { key: "badge", Icon: IconInfo },
+];
+
+export function Sidebar({ onProfileClick, onActionClick, state, userName, className }: SidebarProps) {
+  const isInactive = state === "Inactive";
+  const isFrame = state === "Frame";
+  const firstLetter = userName ? userName.charAt(0).toUpperCase() : "";
+
+  const rootClassName = [
+    "cb-sidebar",
+    isFrame ? "cb-sidebar--frame" : "",
+    isInactive ? "cb-sidebar--inactive" : "",
+    className || "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
-    <div
-      className={["cb-sidebar", `cb-sidebar--${state}`, className].filter(Boolean).join(" ")}
-    >
-      <button
-        type="button"
-        className="cb-sidebar__profile"
-        onClick={onProfileClick}
-        disabled={disabled}
-      >
-        <span className="cb-sidebar__avatar">
-          {avatarUrl ? <img src={avatarUrl} alt="" /> : userName.slice(0, 1)}
-        </span>
+    <div className={rootClassName}>
+      <button type="button" className="cb-sidebar__profile" onClick={onProfileClick}>
+        <span className="cb-sidebar__avatar">{firstLetter}</span>
         <span className="cb-sidebar__name">{userName}</span>
+        <IconChevronDown size={16} className="cb-sidebar__chevron" />
       </button>
-      {(["pill", "location", "user", "badge"] as const).map((a) => (
-        <button
-          key={a}
-          type="button"
-          className="cb-sidebar__action"
-          onClick={() => onActionClick?.(a)}
-          aria-label={a}
-          disabled={disabled}
-        >
-          <span className="cb-sidebar__dot" />
-        </button>
-      ))}
+      <div className="cb-sidebar__actions">
+        {actions.map(({ key, Icon }) => (
+          <button
+            key={key}
+            type="button"
+            className="cb-sidebar__action"
+            onClick={() => onActionClick(key)}
+            disabled={isInactive}
+          >
+            <Icon size={16} />
+            {isFrame && <span className="cb-sidebar__dot" />}
+          </button>
+        ))}
+      </div>
     </div>
   );
-};
-
-export default Sidebar;
+}

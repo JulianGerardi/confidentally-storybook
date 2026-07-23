@@ -1,72 +1,51 @@
 import React from "react";
 import "./EncounterButton.css";
-
-export type EncounterButtonVariant =
-  | "Default"
-  | "Variant2"
-  | "Variant3"
-  | "Variant4"
-  | "Variant5";
-
-const LABELS: Record<EncounterButtonVariant, string> = {
-  Default: "Start Encounter",
-  Variant2: "Fullfield",
-  Variant3: "End",
-  Variant4: "Not Encounter",
-  Variant5: "Paused",
-};
+import { IconChevronUp } from "../_shared/Icons";
 
 export interface EncounterButtonProps {
-  variant?: EncounterButtonVariant;
-  /** Click en el cuerpo principal del botón */
-  onClick?: () => void;
-  /** Click en el segmento derecho (ícono) */
-  onSegmentClick?: () => void;
+  onClick: () => void;
+  onSegmentClick: () => void;
+  variant: "Start Encounter" | "Fullfield" | "End" | "Not Encounter" | "Paused";
   className?: string;
 }
 
-/**
- * EncounterButton (Frame 1000007215) — botón "split" de control del encuentro clínico.
- * Figma: Design system · 2.0 > Clinical Mode > Component — Encounter Buttons (node 600:3714)
- */
-export const EncounterButton: React.FC<EncounterButtonProps> = ({
-  variant = "Default",
-  onClick,
-  onSegmentClick,
-  className,
-}) => {
+function MainIcon({ variant }: { variant: EncounterButtonProps["variant"] }) {
+  if (variant === "Not Encounter") {
+    return null;
+  }
+  if (variant === "Paused") {
+    return (
+      <svg width="14" height="14" viewBox="0 0 24 24">
+        <rect x="6" y="4" width="4" height="16" rx="1" fill="currentColor" />
+        <rect x="14" y="4" width="4" height="16" rx="1" fill="currentColor" />
+      </svg>
+    );
+  }
   return (
-    <div
-      className={["cb-encounter-btn", `cb-encounter-btn--${variant}`, className]
-        .filter(Boolean)
-        .join(" ")}
-    >
-      <button type="button" className="cb-encounter-btn__main" onClick={onClick}>
-        {variant === "Default" && (
-          <svg viewBox="0 0 14 14" className="cb-encounter-btn__icon" aria-hidden="true">
-            <path d="M3 2.5 11 7 3 11.5Z" fill="currentColor" />
-          </svg>
-        )}
-        {variant === "Variant5" && (
-          <svg viewBox="0 0 16 16" className="cb-encounter-btn__icon" aria-hidden="true">
-            <rect x="4" y="3" width="3" height="10" fill="currentColor" />
-            <rect x="9" y="3" width="3" height="10" fill="currentColor" />
-          </svg>
-        )}
-        <span>{LABELS[variant]}</span>
+    <svg width="14" height="14" viewBox="0 0 24 24">
+      <path d="M6 4l14 8-14 8z" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function EncounterButton({ onClick, onSegmentClick, variant, className }: EncounterButtonProps) {
+  const rootClassName = [
+    "cb-encounter-button",
+    `cb-eb--${variant.toLowerCase().replace(/\s+/g, "-")}`,
+    className || "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <div className={rootClassName}>
+      <button type="button" className="cb-eb__main" onClick={onClick}>
+        <MainIcon variant={variant} />
+        <span>{variant}</span>
       </button>
-      <button
-        type="button"
-        className="cb-encounter-btn__segment"
-        onClick={onSegmentClick}
-        aria-label="Más acciones"
-      >
-        <svg viewBox="0 0 14 15" aria-hidden="true">
-          <path d="M2 3l10 4.5L2 12z" fill="currentColor" />
-        </svg>
+      <button type="button" className="cb-eb__segment" onClick={onSegmentClick}>
+        <IconChevronUp size={14} />
       </button>
     </div>
   );
-};
-
-export default EncounterButton;
+}

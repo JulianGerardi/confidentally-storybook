@@ -1,64 +1,109 @@
 import React from "react";
 import "./Referral.css";
-
-export type ReferralType = "Referral" | "Variant3" | "Prescription";
+import { IconDocument, IconTrash, IconKebab } from "../_shared/Icons";
 
 export interface ReferralProps {
-  type?: ReferralType;
-  referringProvider?: string;
-  orderingProvider?: string;
-  specialty?: string;
-  status?: string;
-  onDelete?: () => void;
-  onMoreActions?: () => void;
-  className?: string;
+  onDelete: () => void;
+  onMoreActions: () => void;
+  onViewDocument?: () => void;
+  type: "Referral" | "Variant 3" | "Prescription";
+  referringProvider: string;
+  orderingProvider: string;
+  specialty: string;
+  status: string;
+  lastUpdated: string;
+  created: string;
+  expirationDate: string;
+  medications?: string[];
 }
 
-/**
- * Referral — card de derivación entre proveedores. Figma node 269:572.
- */
-export const Referral: React.FC<ReferralProps> = ({
-  type = "Referral",
-  referringProvider = "James Cartes",
-  orderingProvider = "Abril Viola",
-  specialty = "Orthodontics",
-  status = "Requested",
+function initialsAvatar(name: string, className: string) {
+  const initials = name
+    .split(" ")
+    .map((part) => part.charAt(0))
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+  return <span className={className}>{initials}</span>;
+}
+
+export function Referral({
   onDelete,
   onMoreActions,
-  className,
-}) => (
-  <div className={["cb-referral", className].filter(Boolean).join(" ")} data-type={type}>
-    <div className="cb-referral__provider">
-      <span className="cb-referral__avatar">JC</span>
-      <div>
-        <p className="cb-referral__name">{referringProvider}</p>
-        <p className="cb-referral__role">Referring Provider</p>
+  onViewDocument,
+  type,
+  referringProvider,
+  orderingProvider,
+  specialty,
+  status,
+  lastUpdated,
+  created,
+  expirationDate,
+  medications,
+}: ReferralProps) {
+  return (
+    <div className="cb-referral">
+      <div className="cb-referral__providers">
+        <div className="cb-referral__provider">
+          {initialsAvatar(referringProvider, "cb-referral__avatar cb-referral__avatar--jc")}
+          <div className="cb-referral__provider-info">
+            <span className="cb-referral__provider-name">{referringProvider}</span>
+            <span className="cb-referral__provider-role">Referring Provider</span>
+          </div>
+        </div>
+        <div className="cb-referral__provider">
+          {initialsAvatar(orderingProvider, "cb-referral__avatar cb-referral__avatar--av")}
+          <div className="cb-referral__provider-info">
+            <span className="cb-referral__provider-name">{orderingProvider}</span>
+            <span className="cb-referral__provider-role">Ordering Provider</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className="cb-referral__provider">
-      <span className="cb-referral__avatar">AV</span>
-      <div>
-        <p className="cb-referral__name">
-          {orderingProvider} <span className="cb-referral__specialty">{specialty}</span>
-        </p>
-        <p className="cb-referral__role">Referring Provider</p>
-      </div>
-    </div>
-    <span className="cb-referral__status">{status}</span>
-    <div className="cb-referral__dates">
-      <div><span>Last Updated</span><strong>April 2, 2025</strong></div>
-      <div><span>Created</span><strong>April 2, 2025</strong></div>
-      <div><span>Expiration date</span><strong className="cb-referral__danger">April 1, 2025</strong></div>
-    </div>
-    <div className="cb-referral__actions">
-      <button type="button" onClick={onDelete} aria-label="Eliminar">
-        <svg viewBox="0 0 20 20"><path d="M4 6h12M8 6V4h4v2M6 6l1 12h6l1-12" stroke="currentColor" strokeWidth="1.5" fill="none" /></svg>
-      </button>
-      <button type="button" onClick={onMoreActions} aria-label="Más acciones">
-        <svg viewBox="0 0 20 20"><circle cx="10" cy="4" r="1.5" fill="currentColor" /><circle cx="10" cy="10" r="1.5" fill="currentColor" /><circle cx="10" cy="16" r="1.5" fill="currentColor" /></svg>
-      </button>
-    </div>
-  </div>
-);
 
-export default Referral;
+      <div className="cb-referral__specialty">
+        <span className="cb-referral__specialty-dot" />
+        <span className="cb-referral__specialty-text">{specialty}</span>
+      </div>
+
+      <span className="cb-referral__type">{type}</span>
+      <span className="cb-referral__status">{status}</span>
+
+      <div className="cb-referral__dates">
+        <div className="cb-referral__date">
+          <span className="cb-referral__date-label">Created</span>
+          <span className="cb-referral__date-value">{created}</span>
+        </div>
+        <div className="cb-referral__date">
+          <span className="cb-referral__date-label">Last Updated</span>
+          <span className="cb-referral__date-value">{lastUpdated}</span>
+        </div>
+        <div className="cb-referral__date">
+          <span className="cb-referral__date-label">Expiration</span>
+          <span className="cb-referral__date-value">{expirationDate}</span>
+        </div>
+      </div>
+
+      {type === "Prescription" && medications && medications.length > 0 && (
+        <div className="cb-referral__medications">
+          {medications.map((med) => (
+            <span key={med} className="cb-referral__medication-pill">
+              {med}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="cb-referral__actions">
+        <button type="button" className="cb-referral__action" onClick={onViewDocument}>
+          <IconDocument size={16} />
+        </button>
+        <button type="button" className="cb-referral__action" onClick={onDelete}>
+          <IconTrash size={16} />
+        </button>
+        <button type="button" className="cb-referral__action" onClick={onMoreActions}>
+          <IconKebab size={16} />
+        </button>
+      </div>
+    </div>
+  );
+}

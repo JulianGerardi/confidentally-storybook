@@ -1,51 +1,87 @@
 import React from "react";
-import { ClinicalBadge } from "../ClinicalBadge/ClinicalBadge";
-import { ClinicalBadgeStartEncounter } from "../ClinicalBadgeStartEncounter/ClinicalBadgeStartEncounter";
-import { LocationSelector } from "../LocationSelector/LocationSelector";
 import "./ButtonsContainer.css";
+import {
+  IconPill,
+  IconPulse,
+  IconPersonSearch,
+  IconInfo,
+  IconChevronDown,
+  IconDocument,
+} from "../_shared/Icons";
+import { ClinicalBadge } from "../ClinicalBadge/ClinicalBadge";
+import { LocationSelector } from "../LocationSelector/LocationSelector";
 
 export interface ButtonsContainerProps {
-  patientName?: string;
-  age?: string;
-  sex?: string;
-  height?: string;
-  weight?: string;
-  onStartEncounter?: () => void;
-  className?: string;
+  onStartEncounter: () => void;
+  patientName: string;
+  age: string;
+  sex: string;
+  height: string;
+  weight: string;
 }
 
-/**
- * ButtonsContainer — header completo del paciente en modo clínico
- * (perfil + datos vitales + badges + botón de inicio de encuentro).
- * Figma node 265:2071. Compone ClinicalBadge, LocationSelector y
- * ClinicalBadgeStartEncounter.
- */
-export const ButtonsContainer: React.FC<ButtonsContainerProps> = ({
-  patientName = "Julio Perez",
-  age = "34 yrs",
-  sex = "Male",
-  height = "1.68 m",
-  weight = "65 kg",
-  onStartEncounter,
-  className,
-}) => (
-  <div className={["cb-buttons-container", className].filter(Boolean).join(" ")}>
-    <div className="cb-buttons-container__info">
-      <span className="cb-buttons-container__avatar">{patientName.slice(0, 1)}</span>
-      <span className="cb-buttons-container__name">{patientName}</span>
-      <LocationSelector state="Botons clinical mode" />
-      <span className="cb-buttons-container__stat">{age}</span>
-      <span className="cb-buttons-container__stat">{sex}</span>
-      <span className="cb-buttons-container__stat">{height}</span>
-      <span className="cb-buttons-container__stat">{weight}</span>
-    </div>
-    <div className="cb-buttons-container__badges">
-      <ClinicalBadge type="Chief Complaint" />
-      <ClinicalBadge type="Triage" />
-      <LocationSelector />
-      <ClinicalBadgeStartEncounter onClick={onStartEncounter} />
-    </div>
-  </div>
-);
+const headerActions: { key: "pill" | "location" | "user" | "badge"; Icon: typeof IconPill }[] = [
+  { key: "pill", Icon: IconPill },
+  { key: "location", Icon: IconPulse },
+  { key: "user", Icon: IconPersonSearch },
+  { key: "badge", Icon: IconInfo },
+];
 
-export default ButtonsContainer;
+export function ButtonsContainer({
+  onStartEncounter,
+  patientName,
+  age,
+  sex,
+  height,
+  weight,
+}: ButtonsContainerProps) {
+  return (
+    <div className="cb-buttons-container">
+      <div className="cb-bc__patient">
+        <span className="cb-bc__name">{patientName}</span>
+        <IconChevronDown size={16} className="cb-bc__chevron" />
+        <div className="cb-bc__badges">
+          <ClinicalBadge label="CC" />
+          <ClinicalBadge label="TR" />
+        </div>
+      </div>
+
+      <div className="cb-bc__actions">
+        {headerActions.map(({ key, Icon }) => (
+          <button key={key} type="button" className="cb-bc__action">
+            <Icon size={16} />
+            <span className="cb-bc__dot" />
+          </button>
+        ))}
+      </div>
+
+      <div className="cb-bc__meta">
+        <span>{age}</span>
+        <span className="cb-bc__meta-sep">•</span>
+        <span>{sex}</span>
+        <span className="cb-bc__meta-sep">•</span>
+        <span>{height}</span>
+        <span className="cb-bc__meta-sep">•</span>
+        <span>{weight}</span>
+      </div>
+
+      <LocationSelector />
+
+      <button type="button" className="cb-bc__doc-button">
+        <IconDocument size={16} />
+      </button>
+
+      <button type="button" className="cb-bc__start-encounter" onClick={onStartEncounter}>
+        <span className="cb-bc__start-encounter-main">
+          <svg width="14" height="14" viewBox="0 0 24 24">
+            <path d="M6 4l14 8-14 8z" fill="currentColor" />
+          </svg>
+          Start Encounter
+        </span>
+        <span className="cb-bc__start-encounter-segment">
+          <IconChevronDown size={14} />
+        </span>
+      </button>
+    </div>
+  );
+}

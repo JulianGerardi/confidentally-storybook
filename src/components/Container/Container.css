@@ -2,20 +2,74 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
-  padding: 11px 12px;
-  border: 1px solid var(--color-input-border);
-  border-radius: var(--radius-md);
+  gap: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-default);
   background: var(--color-white);
 }
-.cb-container__text { font-size: 12px; margin: 0; }
-.cb-container__code { font-family: var(--font-heading); font-weight: 700; color: var(--color-confidentally); }
-.cb-container__actions { display: flex; gap: 8px; }
-.cb-container__action {
-  width: 18px; height: 18px; border-radius: 4.85px; border: none;
-  background: var(--color-confidentally); color: var(--color-white);
-  display: flex; align-items: center; justify-content: center; cursor: pointer;
+
+.cb-container__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.cb-container__action svg { width: 10px; height: 10px; }
-.cb-container--Error { border-color: var(--color-danger-default); }
-.cb-container--Disabled { opacity: .5; }
+
+.cb-container__code {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  color: var(--color-confidentally);
+}
+
+.cb-container--inactive .cb-container__code,
+.cb-container--disabled .cb-container__code {
+  color: var(--color-grey-dark);
+}
+
+.cb-container--error .cb-container__code {
+  color: var(--color-danger-default);
+}
+
+.cb-container__description {
+  font-size: 13px;
+  color: var(--color-grey-dark);
+}
+
+.cb-container__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cb-container__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.cb-container--default .cb-container__action,
+.cb-container--variant2 .cb-container__action {
+  background: var(--color-confidentally);
+}
+
+.cb-container--inactive .cb-container__action {
+  background: var(--color-neutral-300);
+  color: var(--color-grey-dark);
+}
+
+.cb-container--error .cb-container__action {
+  background: var(--color-danger-default);
+}
+
+.cb-container--disabled .cb-container__action {
+  background: var(--color-neutral-300);
+  color: var(--color-grey-dark);
+  opacity: 0.5;
+}

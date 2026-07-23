@@ -1,66 +1,116 @@
 import React from "react";
-import { ClinicalBadgeStartEncounter } from "../ClinicalBadgeStartEncounter/ClinicalBadgeStartEncounter";
 import "./LeftColumnProfile.css";
-
-export type LeftColumnProfileSize = "Default" | "SM";
+import {
+  IconEye,
+  IconGrid,
+  IconShield,
+  IconScale,
+  IconDocument,
+  IconCheckCircle,
+  IconUserCircle,
+} from "../_shared/Icons";
 
 export interface LeftColumnProfileProps {
-  size?: LeftColumnProfileSize;
-  patientName?: string;
-  patientAge?: string;
-  activeSection?: string;
-  onNavigate?: (section: string) => void;
-  onStartEncounter?: () => void;
-  className?: string;
+  onNavigate: (section: string) => void;
+  onStartEncounter: () => void;
+  size: "Default" | "Small";
+  patientName: string;
+  patientAge: string;
+  gender: string;
+  language: string;
+  dob: string;
+  phone: string;
+  email: string;
+  address: string;
 }
 
-const NAV_ITEMS = ["Overview", "Treatment", "Insurance", "Ledger", "Documents", "Relationships & Billing"];
+const navItems: { key: string; label: string; Icon: typeof IconEye }[] = [
+  { key: "overview", label: "Overview", Icon: IconEye },
+  { key: "treatment", label: "Treatment", Icon: IconGrid },
+  { key: "insurance", label: "Insurance", Icon: IconShield },
+  { key: "ledger", label: "Ledger", Icon: IconScale },
+  { key: "documents", label: "Documents", Icon: IconDocument },
+];
 
-/**
- * LeftColumnProfile — panel lateral de perfil de paciente. Figma node 610:1152.
- */
-export const LeftColumnProfile: React.FC<LeftColumnProfileProps> = ({
-  size = "Default",
-  patientName = "John Smith",
-  patientAge = "50 years",
-  activeSection = "Relationships & Billing",
+export function LeftColumnProfile({
   onNavigate,
   onStartEncounter,
-  className,
-}) => (
-  <div className={["cb-left-profile", `cb-left-profile--${size}`, className].filter(Boolean).join(" ")}>
-    <div className="cb-left-profile__card">
-      <p className="cb-left-profile__name">{patientName}</p>
-      <p className="cb-left-profile__age">{patientAge}</p>
-      <ClinicalBadgeStartEncounter onClick={onStartEncounter} />
-    </div>
-    <nav className="cb-left-profile__nav">
-      {NAV_ITEMS.map((item) => (
-        <button
-          key={item}
-          type="button"
-          className={item === activeSection ? "cb-left-profile__nav-item cb-left-profile__nav-item--active" : "cb-left-profile__nav-item"}
-          onClick={() => onNavigate?.(item)}
-        >
-          {item}
-        </button>
-      ))}
-    </nav>
-    <hr />
-    <div className="cb-left-profile__section">
-      <p className="cb-left-profile__section-title">General Information</p>
-      <div><span>Gender</span><strong>Male</strong></div>
-      <div><span>Language</span><strong>Spanish</strong></div>
-      <div><span>DOB</span><strong>12/15/1973 (50 yrs)</strong></div>
-    </div>
-    <hr />
-    <div className="cb-left-profile__section">
-      <p className="cb-left-profile__section-title">Contact Details</p>
-      <div><span>Phone Number</span><strong>(555) 234-5678</strong></div>
-      <div><span>Email Address</span><strong>johnsmith@gmail.com</strong></div>
-      <div><span>Address</span><strong>123 Biscayne Blvd</strong></div>
-    </div>
-  </div>
-);
+  size,
+  patientName,
+  patientAge,
+  gender,
+  language,
+  dob,
+  phone,
+  email,
+  address,
+}: LeftColumnProfileProps) {
+  const rootClassName = [
+    "cb-left-column-profile",
+    size === "Small" ? "cb-lcp--small" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-export default LeftColumnProfile;
+  return (
+    <div className={rootClassName}>
+      <div className="cb-lcp__header">
+        <div className="cb-lcp__name-row">
+          <span className="cb-lcp__name">{patientName}</span>
+          <IconCheckCircle size={14} className="cb-lcp__verified" />
+        </div>
+        <span className="cb-lcp__age">{patientAge}</span>
+        <button type="button" className="cb-lcp__start-encounter" onClick={onStartEncounter}>
+          <IconUserCircle size={16} className="cb-lcp__start-encounter-icon" />
+          Relationships & Billing
+        </button>
+      </div>
+
+      <nav className="cb-lcp__nav">
+        {navItems.map(({ key, label, Icon }) => (
+          <button
+            key={key}
+            type="button"
+            className="cb-lcp__nav-item"
+            onClick={() => onNavigate(key)}
+          >
+            <Icon size={16} className="cb-lcp__nav-icon" />
+            {label}
+          </button>
+        ))}
+      </nav>
+
+      <div className="cb-lcp__section">
+        <h4 className="cb-lcp__section-title">General Information</h4>
+        <div className="cb-lcp__field">
+          <span className="cb-lcp__field-label">Gender</span>
+          <span className="cb-lcp__field-value">{gender}</span>
+        </div>
+        <div className="cb-lcp__field">
+          <span className="cb-lcp__field-label">Language</span>
+          <span className="cb-lcp__field-value">{language}</span>
+        </div>
+        <div className="cb-lcp__field">
+          <span className="cb-lcp__field-label">Date of Birth</span>
+          <span className="cb-lcp__field-value">{dob}</span>
+        </div>
+      </div>
+
+      <div className="cb-lcp__section">
+        <h4 className="cb-lcp__section-title">Contact Details</h4>
+        <div className="cb-lcp__field">
+          <span className="cb-lcp__field-label">Phone</span>
+          <span className="cb-lcp__field-value">{phone}</span>
+        </div>
+        <div className="cb-lcp__field">
+          <span className="cb-lcp__field-label">Email</span>
+          <span className="cb-lcp__field-value">{email}</span>
+        </div>
+        <div className="cb-lcp__field">
+          <span className="cb-lcp__field-label">Address</span>
+          <span className="cb-lcp__field-value">{address}</span>
+        </div>
+      </div>
+    </div>
+  );
+}
