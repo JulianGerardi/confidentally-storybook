@@ -1,0 +1,74 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Screens/Referral" />
+
+# Dialog - Discard Procedure (With Conditions)
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Referral (node `284:881`) — también aparece en Lab Order y Dental Assessment con el mismo nombre
+- **Node ID:** `802:12548`
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=802-12548
+- **Tamaño:** 465×462.4
+
+## Descripción
+
+Modal de confirmación para descartar un procedimiento/derivación que tiene condiciones asociadas.
+
+## Composición
+
+- `Title Text`, `Confirmation Text`, texto secundario (`Subtext`)
+- 2× `Badge` con `Calendar Icon` (probablemente mostrando fechas/condiciones vinculadas que se perderían)
+- 4× `Button` (acciones del diálogo, ej. Cancel / Discard)
+
+## Notas
+
+- Este mismo diálogo (mismo nombre, misma composición) se reutiliza en las páginas de Lab Order y Dental Assessment — es un patrón de confirmación reutilizable, no exclusivo de Referral.
+
+---
+
+# Referral - Information (formulario)
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Referral (node `284:881`)
+- **Node IDs:** `409:9102` · `851:16331` (duplicado)
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=409-9102
+- **Tamaño:** 1055×1055
+
+## Descripción
+
+Formulario para crear/editar una derivación (referral) de un paciente hacia otro proveedor.
+
+## Secciones principales
+
+- Header + `ClinicalModeButton`
+- `Status` / `Status Indicator` (estado de la derivación)
+- 2× "Provider Info" (proveedor referente y proveedor destino), cada uno con `Provider Icon`, `Provider Name`
+- 4× `Badge` (procedimientos/especialidades vinculadas)
+- Sección de subida de archivos ("Upload Text")
+- 2× `Input search`, 2× `Input`, 2× `Checkbox`
+- 8× `Icon` genéricos, `Delete Icon`
+- Acciones: `Cancel Button`, `Save Button`
+
+## Notas
+
+- `409:9102` y `851:16331` son duplicados idénticos en composición.
+
+---
+
+# Referral - Information (tabla/listado)
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Referral (node `284:881`)
+- **Node ID:** `455:2111`
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=455-2111
+- **Tamaño:** 1055×978
+
+## Descripción
+
+Vista de listado de derivaciones (referrals) del paciente en formato de cards apiladas — corresponde al componente `Referral` documentado en Design System (columnas: Referring Provider, Ordering Provider, Status, Last Updated, Created, Expiration Date, Actions).
+
+## Composición
+
+- Header + `ClinicalModeButton`
+- 18× `Avatar`, 18× `Badge`, 20× `Button` — múltiples filas de derivaciones repitiendo el patrón del componente `Referral` (ver `06-Referral.md` en la documentación del Design System)
+- Datos de ejemplo: "James Cartes" (Referring Provider), "Abril Viola" (Ordering Provider), fechas "April 2, 2025" / "April 1, 2025"

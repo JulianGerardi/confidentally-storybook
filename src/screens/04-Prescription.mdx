@@ -1,0 +1,59 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Screens/Prescription" />
+
+# Prescription - Form
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Prescription (node `284:10065`)
+- **Node ID:** `455:6636`
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=455-6636
+- **Tamaño:** 1055×1255.9
+
+## Descripción
+
+Formulario completo para emitir una receta/prescripción médica, dividido en dos columnas.
+
+## Secciones principales
+
+- Header + `ClinicalModeButton`, `Status` (2× icono), `Expiration Date Label/Value`
+- Tabs de navegación (`Tabs` instance)
+- **Columna izquierda ("Edit Hours Section"):**
+  - Input de búsqueda de medicamento
+  - 3 filas de "Procedure section" pareadas (6 inputs de medicamento/dosis)
+  - 3× Switch con labels: "Update Patient Medications", "Controlled Substance", "Allow Generic Substitution"
+- **Columna derecha:** 3 filas más de "Procedure section" (5 inputs) + `AlertMessage`
+- Sección adicional "Outline Container" con un campo de texto libre grande (`Input Field`, 931×162)
+- Footer: `Cancel Button`, `Save Button`
+
+## Notas
+
+- Reutiliza el patrón "Procedure section" (label + input) de forma consistente en ambas columnas.
+
+---
+
+# Prescription - List
+
+- **Archivo Figma:** UX-UI · 2.0
+- **Página:** ↪ Prescription (node `284:10065`) — también existe una copia dentro de la página Lab Order (node `606:7898`, id `612:7462`)
+- **Node ID:** `652:10811`
+- **URL:** https://www.figma.com/design/aESBq2SDwG2b4fnTyfBUgn/UX-UI-·-2.0?node-id=652-10811
+- **Tamaño:** 1064×926
+
+## Descripción
+
+Tabla de listado de recetas/prescripciones del paciente.
+
+## Columnas de la tabla
+
+Provider · Medications · Status · Created · Start · End Date · Actions
+
+## Composición
+
+- Header + `ClinicalModeButton`
+- 9 filas ("Prescription Row"), cada una con: `Avatar` + nombre del proveedor, `Status Indicator` ×2 (estado + horario), 3 fechas, 3 `Button` de acción
+- Footer: "Showing 9 active prescriptions" + link "View History →"
+
+## Notas
+
+- Existe una segunda copia de esta misma tabla dentro de la página "Lab Order" (`606:7898`, node `612:7462`) con headers de columna ligeramente distintos ("Provider Header", "Patient Header", etc. en vez de "Provider", "Medications"...) — inconsistencia de nomenclatura entre ambas copias a revisar, además de que no debería estar duplicada en dos páginas distintas.

@@ -1,0 +1,24 @@
+.cb-left-profile {
+  width: 209px;
+  background: var(--color-white);
+  border: 0.88px solid #e2e8f0;
+  border-radius: 14.1px;
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-family: var(--font-heading);
+}
+.cb-left-profile--SM { width: 165px; }
+.cb-left-profile__card { background: var(--color-blue-50); border-radius: 12px; padding: 16px 11px; text-align: center; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.cb-left-profile__name { font-weight: 600; font-size: 14px; margin: 0; }
+.cb-left-profile__age { font-size: 12px; margin: 0; color: var(--color-grey-dark); }
+.cb-left-profile__nav { display: flex; flex-direction: column; gap: 10px; }
+.cb-left-profile__nav-item { text-align: left; border: none; background: none; border-radius: 7px; padding: 7px 10.6px; font-size: 11.5px; font-weight: 600; cursor: pointer; color: var(--color-black); }
+.cb-left-profile__nav-item--active { background: var(--color-confidentally); color: var(--color-white); }
+.cb-left-profile hr { border: none; border-top: 0.88px solid #f1f5f9; margin: 0; }
+.cb-left-profile__section { display: flex; flex-direction: column; gap: 14px; font-size: 10.6px; }
+.cb-left-profile__section-title { font-weight: 700; color: #3f3f46; margin: 0; }
+.cb-left-profile__section div { display: flex; flex-direction: column; gap: 2px; }
+.cb-left-profile__section span { color: #64748b; }
+.cb-left-profile__section strong { color: #1e293b; font-weight: 600; }

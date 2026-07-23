@@ -1,0 +1,53 @@
+.cb-encounter-btn {
+  display: inline-flex;
+  border-radius: 9.8px;
+  overflow: hidden;
+  border: 1.9px solid var(--color-success-normal);
+  background: var(--color-success-light-hover);
+}
+.cb-encounter-btn__main {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  background: transparent;
+  color: var(--color-success-normal-active);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 12.3px;
+  padding: 0 14px;
+  cursor: pointer;
+}
+.cb-encounter-btn__icon { width: 15px; height: 15px; }
+.cb-encounter-btn__segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  border: none;
+  border-left: 1.9px solid var(--color-success-normal);
+  background: var(--color-success-normal);
+  color: var(--color-white);
+  cursor: pointer;
+}
+.cb-encounter-btn__segment svg { width: 13px; height: 15px; }
+
+.cb-encounter-btn--Variant4 {
+  border-color: var(--color-not-encounter-border);
+  background: var(--color-not-encounter-bg);
+}
+.cb-encounter-btn--Variant4 .cb-encounter-btn__main { color: var(--color-black); font-size: 12.9px; }
+.cb-encounter-btn--Variant4 .cb-encounter-btn__segment {
+  background: var(--color-grey-dark);
+  border-color: var(--color-grey-dark);
+}
+
+.cb-encounter-btn--Variant5 {
+  border-color: var(--color-warning-dark);
+  background: #ffe9be;
+}
+.cb-encounter-btn--Variant5 .cb-encounter-btn__main { color: var(--color-warning-dark); }
+.cb-encounter-btn--Variant5 .cb-encounter-btn__segment {
+  background: var(--color-warning-dark);
+  border-color: var(--color-warning-dark);
+}

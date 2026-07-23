@@ -1,0 +1,32 @@
+.cb-card-referral {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 41px;
+  width: 403px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-confidentally);
+  border-radius: 6px;
+  background: var(--color-white);
+  box-shadow: 0 1px 31px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  text-align: left;
+}
+.cb-card-referral__label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--color-black);
+  text-transform: capitalize;
+}
+.cb-card-referral__icon {
+  width: 21px; height: 21px; border-radius: 5.5px;
+  background: var(--color-confidentally); color: var(--color-white);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.cb-card-referral__icon svg { width: 12px; height: 12px; }
+
+.cb-card-referral--Inactive { border-color: var(--color-neutral-300); opacity: .7; }
+.cb-card-referral--Error { border-color: var(--color-danger-default); }
+.cb-card-referral--Error .cb-card-referral__icon { background: var(--color-danger-default); }
+.cb-card-referral--Disabled { border-color: var(--color-neutral-300); opacity: .5; cursor: not-allowed; }

@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# Confidentally
+
+## Design System
+
+Este Storybook reúne el código funcionando, los componentes y la documentación del design system de **Confidentally** — extraído y sincronizado directamente desde Figma (**Design system · 2.0** y **UX-UI · 2.0**). Ayuda al equipo de producto a construir de forma más eficiente, consistente y on-brand.
+
+**OBJETIVO:**
+
+Que cualquier dev pueda abrir un componente acá, ver sus variantes reales, su JSON de parámetros/tokens, su CSS y su código React — sin tener que abrir Figma ni adivinar valores.
+
+---
+
+## Beneficios del design system
+
+**EFICIENCIA**
+
+Los devs no necesitan reconstruir componentes desde cero mirando capturas de Figma. La librería compartida (con JSON + CSS + React ya armados) reduce el margen de error.
+
+**CONSISTENCIA**
+
+Los tokens (color, radios, tipografía) están centralizados en `src/tokens/`. Cambiar un valor ahí actualiza todos los componentes a la vez, y se puede re-sincronizar con Figma cuando haga falta.
+
+**ESCALA**
+
+A medida que Figma crece (más páginas, más pantallas), este mismo patrón — un .md de documentación + un componente + una story — se puede repetir para cubrir el resto del sistema.
+
+---
+
+## Cómo usar este sitio
+
+Este sitio usa **Storybook** para mostrar la documentación y los componentes.
+
+- **[Foundations](/docs/foundations-design-tokens--docs)** — tokens de color, radio y tipografía, sincronizables desde Figma.
+- **Components** — los 12 componentes de "Clinical Mode" (badges, botones, cards, stepper), cada uno con sus variantes controlables y una story **Inspector** con JSON/CSS/React.
+- **Screens** — documentación de las ~130 pantallas relevadas en **UX-UI · 2.0** (Patients, Referral, Lab Order, Treatment Plan, etc.), organizadas por flujo.
+
+Todo el contenido de este sitio viene de los archivos `.md` generados durante el relevamiento de Figma (carpetas `clinical-mode-components/` y `ux-ui-screens/` en el proyecto), así que sirve como fuente única de verdad entre diseño y código.
+
+### Sincronizar con Figma
+
+Los tokens se pueden re-sincronizar en cualquier momento corriendo:
+
+```
+FIGMA_TOKEN=tu_token npm run sync-tokens
+```
+
+Ver el detalle completo en el `README.md` del proyecto.

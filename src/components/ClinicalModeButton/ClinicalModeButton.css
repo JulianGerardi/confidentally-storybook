@@ -1,0 +1,27 @@
+.cb-clinical-mode-button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  background: var(--color-white);
+  border: 0.5px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: 8px 15px 8px 26px;
+  width: fit-content;
+}
+.cb-cmb__tab {
+  border: none;
+  background: var(--color-white);
+  color: var(--color-foreground-default);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 23px;
+  border-radius: 40.728px;
+  cursor: pointer;
+}
+.cb-cmb__tab--active {
+  background: var(--color-confidentally);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+}
