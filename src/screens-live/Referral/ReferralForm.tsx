@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ButtonsContainer } from "../../components/ButtonsContainer/ButtonsContainer";
 import { ClinicalModeButton } from "../../components/ClinicalModeButton/ClinicalModeButton";
 import {
@@ -19,6 +19,7 @@ import {
   FileDropzone,
   UploadedFileRow,
 } from "../../components/_shared/FormControls";
+import { NewLaboratoryDialog } from "./NewLaboratoryDialog";
 import "./ReferralForm.css";
 
 const TABS = [
@@ -33,6 +34,8 @@ const TABS = [
 ];
 
 export function ReferralForm() {
+  const [isNewLabOpen, setIsNewLabOpen] = useState(false);
+
   return (
     <div className="cb-referral-form">
       <ButtonsContainer
@@ -84,7 +87,14 @@ export function ReferralForm() {
           </div>
 
           <div className="cb-referral-form__link-row">
-            <a href="#" className="cb-inline-link">
+            <a
+              href="#"
+              className="cb-inline-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsNewLabOpen(true);
+              }}
+            >
               <IconPlusCircle size={16} />
               New Laboratory
             </a>
@@ -211,6 +221,20 @@ export function ReferralForm() {
           ✓ Save
         </button>
       </div>
+
+      {isNewLabOpen && (
+        <div
+          className="cb-referral-form__overlay"
+          onClick={() => setIsNewLabOpen(false)}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <NewLaboratoryDialog
+              onCancel={() => setIsNewLabOpen(false)}
+              onSave={() => setIsNewLabOpen(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
