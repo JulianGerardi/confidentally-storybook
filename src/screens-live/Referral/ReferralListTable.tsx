@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonsContainer } from "../../components/ButtonsContainer/ButtonsContainer";
 import { ClinicalModeButton } from "../../components/ClinicalModeButton/ClinicalModeButton";
-import { IconArrowLeft, IconLayoutGrid, IconDocument, IconKebab } from "../../components/_shared/Icons";
+import { IconChevronLeft, IconLayoutPanelLeft, IconDocument, IconKebab } from "../../components/_shared/Icons";
 import { StatusPill } from "../../components/_shared/FormControls";
 import "./ReferralListTable.css";
 
@@ -156,11 +156,11 @@ export function ReferralListTable() {
 
       <div className="cb-referral-list-table__nav-row">
         <button type="button" className="cb-secondary-btn">
-          <IconArrowLeft size={16} />
+          <IconChevronLeft size={16} />
           Exit clinical mode
         </button>
         <button type="button" className="cb-secondary-btn">
-          <IconLayoutGrid size={16} />
+          <IconLayoutPanelLeft size={16} />
           Overview
         </button>
       </div>
