@@ -232,3 +232,22 @@ export function IconInfo({ size = 18, className }: IconProps) {
     </svg>
   );
 }
+
+export function IconLayoutPanelLeft({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="2" />
+      <path d="M9 3.5v17" />
+    </svg>
+  );
+}
+
+export function IconBadgeInfo({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
+      <path d="M8 3h8l5 5v8l-5 5H8l-5-5V8z" />
+      <path d="M12 11v5" />
+      <circle cx="12" cy="8" r="0.6" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
