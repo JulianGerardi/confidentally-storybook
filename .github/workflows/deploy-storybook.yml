@@ -30,7 +30,7 @@ jobs:
         # Usa "npm install" porque todavía no hay package-lock.json commiteado.
         # Una vez que corras "npm install" en tu máquina y subas el lockfile,
         # cambiá esto a "npm ci" (más rápido y reproducible).
-        run: npm install
+      run: npm install --legacy-peer-deps
 
       - name: Build Storybook
         run: npm run build-storybook
