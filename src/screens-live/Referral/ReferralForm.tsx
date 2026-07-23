@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { ButtonsContainer } from "../../components/ButtonsContainer/ButtonsContainer";
 import { ClinicalModeButton } from "../../components/ClinicalModeButton/ClinicalModeButton";
 import {
-  IconArrowLeft,
-  IconLayoutGrid,
+  IconChevronLeft,
+  IconLayoutPanelLeft,
   IconDocument,
   IconKebab,
   IconPlusCircle,
@@ -49,11 +49,11 @@ export function ReferralForm() {
 
       <div className="cb-referral-form__nav-row">
         <button type="button" className="cb-secondary-btn">
-          <IconArrowLeft size={16} />
+          <IconChevronLeft size={16} />
           Exit clinical mode
         </button>
         <button type="button" className="cb-secondary-btn">
-          <IconLayoutGrid size={16} />
+          <IconLayoutPanelLeft size={16} />
           Overview
         </button>
       </div>
