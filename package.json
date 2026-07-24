@@ -1,13 +1,11 @@
 {
-  "name": "confidentally-storybook",
+  "name": "confidentally-design-system",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
     "sync-tokens": "node scripts/sync-figma-tokens.mjs"
   },
   "dependencies": {
@@ -15,20 +13,10 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@storybook/addon-docs": "^8.4.0",
-    "@storybook/addon-essentials": "^8.4.0",
-    "@storybook/addon-interactions": "^8.4.0",
-    "@storybook/addon-links": "^8.4.0",
-    "@storybook/blocks": "^8.4.0",
-    "@storybook/react": "^8.4.0",
-    "@storybook/react-vite": "^8.4.0",
-    "@storybook/manager-api": "^8.4.0",
-    "@storybook/theming": "^8.4.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.3",
     "node-fetch": "^3.3.2",
-    "storybook": "^8.4.0",
     "typescript": "^5.6.3",
     "vite": "^5.4.10"
   }
